@@ -3,13 +3,12 @@ html
   head
     title Calculator
     script.
-      function add()
-      {
+      function add() {
       var num1 = document.getElementById('num1');
       var num2 = document.getElementById('num2');
       var d = document.getElementById('output');
       console.log(num1.value);
-      d.textContent=Number(num1.value)+Number(num2.value);
+      d.textContent = Number(num1.value) + Number(num2.value);
       }
   body
     h1(align='center') Calculator
@@ -20,3 +19,7 @@ html
       h2#output(align='center')
         | 0
         p
+      br
+      br
+      br
+      a(href='/food') Padhai ke baad kuch khaale ab

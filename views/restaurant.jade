@@ -1,0 +1,105 @@
+doctype html
+html
+  head
+    title KFC
+    style.
+      .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+      }
+      /* Safari */
+      @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+      }
+      @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+      }
+  body
+    h1 Welcome to KFC!
+    form#form
+      h3 Main Course
+      input#RiceBowlz(type='checkbox')
+      | Rice Bowlz
+      br
+      input#SmokyGrilled(type='checkbox')
+      | Smoky Grilled
+      br
+      input#CrispyChicken(type='checkbox')
+      | CrispyChicken
+      br
+      h3 Sides
+      input#ChickenPopcorn(type='checkbox')
+      | Chicken Popcorn
+      br
+      input#Wings(type='checkbox')
+      | Wings
+      br
+      input#ChickenBurgerWithExtraCheese(type='checkbox')
+      | Chicken Burger With Extra Cheese
+      br
+      h3 Cold Drinks
+      input(type='radio', name='Cold', value='7')
+      | Fanta
+      br
+      input(type='radio', name='Cold', value='8')
+      | Coca Cola
+      br
+      input(type='radio', name='Cold', value='9')
+      | Sprite
+      br
+      br
+      br
+    button(onclick='PlaceOrder();') Place Order
+    #load
+    br
+    br
+    textarea#display(cols='50', rows='15', placeholder='Your order will display here!')
+    script(type='text/javascript').
+      console.log("hi");
+      function wait(ms) {
+      var start = Date.now(),
+      now = start;
+      while (now - start < ms) {
+      now = Date.now();
+      }
+      }
+      function PlaceOrder()
+      {
+      var f = document.getElementById("form");
+      var price = [1,2,3,4,5,6];
+      var total =0;
+      for(var i=0;i<6;i++)
+      {
+      if(f[i].checked==true)
+      {
+      total+=price[i];
+      }
+      }
+      total+=Number(f.Cold.value);
+      console.log(total);
+      var d =  document.getElementById("display");
+      var load = document.getElementById("load");
+      load.classList.add('loader');
+      d.value="Your order is being processed . Please wait for confirmation."
+      setTimeout(function(){
+      load.classList.remove('loader');
+      d.value="You have placed an order of amount:" + total + " \\n Thank you for choosing KFC ! \n But bhai abhi lockdown hai , kuch nhi milne waala tereko . \n gaana kya sun rha hai pagal";
+      },3000)
+      //wait(2000);
+      /*console.log(a.checked);
+      if(a.checked==true)
+      {
+      console.log("Bhai pehla checkbox checked hai !");
+      }
+      else
+      {
+      console.log("Bhai check karna hai toh karle kyunki abhi toh check nhi hai !");
+      }*/
+      }
